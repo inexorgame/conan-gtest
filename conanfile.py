@@ -43,8 +43,6 @@ class GTestConan(ConanFile):
                 cmake.definitions["BUILD_SHARED_LIBS"] = "1"
             if self.options.fpic:
                 cmake.definitions["CMAKE_POSITION_INDEPENDENT_CODE"] = "ON"
-            if float(str(self.settings.compiler.version)) >= 15 and self.settings.compiler == "Visual Studio":
-                cmake.definitions["CMAKE_CXX_FLAGS"] = "-DGTEST_LANG_CXX11=1 -DGTEST_HAS_TR1_TUPLE=0"
 
             cmake.definitions["BUILD_GTEST"] = "ON" if self.options.no_gmock else "OFF"
             cmake.definitions["BUILD_GMOCK"] = "OFF" if self.options.no_gmock else "ON"
